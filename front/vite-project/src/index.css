@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "MonumentExtended";
+  src: url("./assets/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  src: url("./assets/fonts/RedHatDisplay-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* Soporta variable weights */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  src: url("./assets/fonts/RedHatDisplay-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+.ticket-mask {
+  -webkit-mask-image: url("/ticket-bg.png");
+  mask-image: url("/ticket-bg.png");
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.font-monument {
+  font-family: "MonumentExtended", sans-serif;
+}
+
+.font-redhat {
+  font-family: "Red Hat Display";
+}
