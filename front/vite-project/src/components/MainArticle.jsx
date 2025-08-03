@@ -9,7 +9,7 @@ const MainArticle = () => {
         <img
           src={imageDesktop}
           alt="Articulo principal imagen"
-          className="w-screen h-auto"
+          className="w-screen h-[78vh]"
         />
       </picture>
       <button className="absolute border border-white  text-[14px] bottom-1/4 left-1/10 bg-black hover:bg-white hover:text-black text-white py-2 px-4">

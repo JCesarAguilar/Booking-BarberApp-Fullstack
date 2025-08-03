@@ -6,12 +6,29 @@ import imageRegister from "../../assets/images/fondo_register.jpg";
 const Register = () => {
   return (
     <div
-      className="relative flex h-screen bg-cover bg-center font-redhat"
+      className="min-h-[78vh] 
+                 bg-cover bg-center 
+                 font-redhat"
       style={{ backgroundImage: `url(${imageRegister})` }}
     >
-      <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-        <div className="flex w-[85%] h-[70%] mx-auto">
-          <div className="w-1/2 flex text-gray-50 flex-col items-center justify-center p-10 bg-black shadow-2xl">
+      <div
+        className="flex
+                 bg-black/70 min-h-[78vh]  
+                  items-center justify-center"
+      >
+        <div
+          className="flex flex-col 
+                     w-full h-full 
+                     shadow-2xl shadow-black/70
+                     md:flex-row md:w-[70%] md:h-[80%]"
+        >
+          <div
+            className="bg-black w-full
+                        flex flex-col p-10
+                       text-gray-50
+                        items-center justify-center  
+                        md:w-1/2 md:h-auto"
+          >
             <div className="bg-gray-50 text-black rounded-full p-6 mb-6">
               <svg
                 className="w-16 h-16"
@@ -31,7 +48,11 @@ const Register = () => {
               ESTAMOS <br /> PARA <br /> ATENDERTE
             </h1>
           </div>
-          <div className="w-1/2 bg-gray-50 p-12 shadow-2xl flex flex-col justify-center">
+          <div
+            className="bg-gray-50 w-full p-8
+                        flex flex-col justify-center
+                        md:w-1/2 md:p-10"
+          >
             <h2 className="font-monument text-3xl mb-6">REGÍSTRATE AQUÍ</h2>
             <Formik
               initialValues={{
@@ -184,7 +205,7 @@ const Register = () => {
                   <div className="col-span-2">
                     <button
                       type="submit"
-                      className="w-full font-bold mt-4 bg-black text-gray-50 py-2 rounded disabled:bg-gray-50 disabled:text-black disabled:border disabled:border-black transition-all duration-200 ease-in-out"
+                      className="w-full font-bold mt-4 bg-black text-gray-50 py-2 rounded cursor-pointer disabled:bg-gray-50 disabled:text-black disabled:border disabled:border-black transition-all duration-200 ease-in-out disabled:pointer-events-none"
                       disabled={!(dirty && isValid)}
                     >
                       REGISTRARSE

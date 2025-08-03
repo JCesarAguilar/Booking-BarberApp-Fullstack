@@ -5,18 +5,59 @@ import MisTurnos from "./views/MisTurnos/MisTurnos";
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./components/NotFound";
+import Shedule from "./views/Schedule/Schedule";
+import { useLocation } from "react-router-dom";
+import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
 
 function App() {
+  const location = useLocation();
+  const rutasConLayout = ["/", "/register", "/login", "/turnos", "/schedule"];
+  const hideLayout = !rutasConLayout.includes(location.pathname);
+
   return (
     <>
-      <Header />
+      {!hideLayout && <Header />}
+
       <Routes>
         <Route path="/" element={<MainArticle />} />
-        <Route path="/turnos" element={<MisTurnos />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={
+            <RedirectIfLoggedIn>
+              <Register />
+            </RedirectIfLoggedIn>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RedirectIfLoggedIn>
+              <Login />
+            </RedirectIfLoggedIn>
+          }
+        />
+        <Route
+          path="/turnos"
+          element={
+            <ProtectedRoute>
+              <MisTurnos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <ProtectedRoute>
+              <Shedule />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+
+      {!hideLayout && <Footer />}
     </>
   );
 }

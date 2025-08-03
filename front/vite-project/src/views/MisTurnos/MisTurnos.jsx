@@ -1,53 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Turno from "../../components/Turno";
-import axios from "axios";
-import TurnForm from "../../components/TurnForm";
 import imagenTurnos from "../../assets/images/fondo_turnos.jpg";
+import { useAuth } from "../../context/useAuth";
 
 const MisTurnos = () => {
-  const [turnos, setTurnos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchTurnos = async () => {
-    try {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      const userId = storedUser?.user?.id;
-
-      if (!userId) return;
-
-      const response = await axios.get(`http://localhost:3000/users/${userId}`);
-
-      const turnosUsuario = response.data.appointments || [];
-
-      setTurnos(turnosUsuario);
-    } catch (error) {
-      console.error("Error al traer las reservas", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { user, userAppointments, updateAppointments } = useAuth();
 
   useEffect(() => {
-    fetchTurnos();
-  }, []);
-
-  if (loading) {
-    return <p>Cargando reservas...</p>;
-  }
+    if (user) {
+      updateAppointments();
+    }
+  }, [user, updateAppointments, userAppointments]);
 
   return (
     <div
-      className="bg-cover bg-center"
+      className="min-h-[78vh]
+                 bg-cover bg-center"
       style={{ backgroundImage: `url(${imagenTurnos})` }}
     >
-      <div className="bg-black/10 backdrop-blur-md">
-        <TurnForm onTurnoCreado={fetchTurnos} />
-        <h2 className="font-monument text-center text-4xl mt-15 -mb-20 text-gray-50">
+      <div
+        className="flex flex-col items-center
+                  backdrop-blur bg-black/30
+                  min-h-[78vh]"
+      >
+        <h2
+          className="font-monument text-gray-50 text-4xl 
+                       pt-15 md:text-5xl"
+        >
           MIS RESERVAS
         </h2>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center mx-auto pb-20">
-          {turnos.length > 0 ? (
-            turnos.map((turno) => (
+        <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center mx-auto pb-20">
+          {userAppointments.length > 0 ? (
+            userAppointments.map((turno) => (
               <Turno
                 key={turno.id}
                 id={turno.id}
@@ -57,7 +41,11 @@ const MisTurnos = () => {
               />
             ))
           ) : (
-            <h2 className="font-monument text-gray-50 pt-30 text-2xl text-center col-span-full">
+            <h2
+              className="col-span-full pt-50
+                          font-monument text-gray-50 text-xl
+                          md:text-3xl"
+            >
               No hay reservas para mostrar
             </h2>
           )}

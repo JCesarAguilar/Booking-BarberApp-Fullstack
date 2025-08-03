@@ -3,18 +3,34 @@ import validateLogin from "../../helpers/validateLogin";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import imageRegister from "../../assets/images/fondo_register.jpg";
+import { useAuth } from "../../context/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   return (
     <div
-      className="relative flex h-screen bg-cover bg-center font-redhat"
+      className="min-h-[78vh]
+                 bg-cover bg-center 
+                 font-redhat"
       style={{ backgroundImage: `url(${imageRegister})` }}
     >
-      <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-        <div className="flex w-[85%] h-[70%] mx-auto">
-          <div className="w-1/2 flex text-gray-50 flex-col items-center justify-center p-10 bg-black shadow-2xl">
+      <div
+        className="flex
+                 bg-black/70 min-h-[78vh]
+                   items-center justify-center"
+      >
+        <div
+          className="flex flex-col 
+                      w-full h-full 
+                      shadow-2xl shadow-black/70
+                      md:w-[60%] md:h-100 md:flex-row"
+        >
+          <div
+            className="bg-black w-full flex
+                      text-gray-50 flex-col items-center justify-center p-10 
+                        md:w-1/2"
+          >
             <div className="bg-gray-50 text-black rounded-full p-6 mb-6">
               <svg
                 className="w-16 h-16"
@@ -34,8 +50,12 @@ const Login = () => {
               ESTAMOS <br /> PARA <br /> ATENDERTE
             </h1>
           </div>
-          <div className="w-1/2 bg-gray-50 p-12 shadow-2xl flex flex-col justify-center">
-            <h2 className="font-monument text-3xl mb-6 ">INICIAR SESIÓN</h2>
+          <div
+            className="bg-gray-50 w-full h-full p-10 
+                        flex flex-col
+                        md:w-1/2"
+          >
+            <h2 className="font-monument text-3xl mb-6">INICIAR SESIÓN</h2>
             <Formik
               initialValues={{
                 username: "",
@@ -48,16 +68,19 @@ const Login = () => {
                     "http://localhost:3000/users/login",
                     input
                   );
+                  const loggedUserData = response.data;
+
+                  await login(loggedUserData);
+
                   alert(response.data.message || "Inicio de sesión exitoso ✅");
-                  localStorage.setItem("user", JSON.stringify(response.data));
                   navigate("/turnos");
                   resetForm();
                 } catch (error) {
                   const errorMsg =
                     error.response?.data?.message ||
                     "Usuario y/o Contraseña incorrectos";
-                  console.error("Error al iniciar sesión:", errorMsg);
                   alert(errorMsg);
+                  console.error("Error al iniciar sesión:", errorMsg);
                 }
               }}
             >
@@ -94,7 +117,7 @@ const Login = () => {
                   <div className="col-span-1">
                     <button
                       type="submit"
-                      className="w-full font-bold mt-4 bg-black text-gray-50 py-2 rounded disabled:bg-gray-50 disabled:text-black disabled: border disabled: border-black transition-all duration-200 ease-in-out"
+                      className="w-full font-bold mt-4 bg-black text-gray-50 py-2 rounded cursor-pointer disabled:bg-gray-50 disabled:text-black disabled: border disabled: border-black transition-all duration-200 ease-in-out disabled:pointer-events-none"
                       disabled={!(dirty && isValid)}
                     >
                       LOGIN

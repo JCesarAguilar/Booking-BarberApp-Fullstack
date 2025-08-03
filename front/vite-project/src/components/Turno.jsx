@@ -1,20 +1,23 @@
+import CancelButton from "./CancelButton";
+
 const Turno = ({ id, date, time, status }) => {
   return (
     <div
       className="ticket-mask 
                     relative
-                    p-14  
+                    pl-14
                     w-full h-[370px]         
-                    hover:scale-105 
-                    duration-300
                     flex flex-col justify-center
-                    items-start
-                    font-redhat"
+                    font-redhat
+                    -mt-15"
     >
-      <h3 className="text-2xl font-bold mt-8 mb-4">Reserva #: {id}</h3>
-      <div className="space-y-2 text-base">
+      <h3 className="text-2xl font-bold mt-27 mb-4 ">Reserva #: {id}</h3>
+      <div className="flex flex-col gap-2 space-y-2 text-base">
         <p>📅 Fecha: {date}</p>
         <p>⏰ Hora: {time}</p>
+      </div>
+      <div className="pt-7">
+        <CancelButton appointmentId={id} />
       </div>
       <div className="absolute right-13 top-62 transform -translate-y-1/2">
         <p
