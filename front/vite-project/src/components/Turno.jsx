@@ -11,13 +11,13 @@ const Turno = ({ id, date, time, status }) => {
                     font-redhat
                     -mt-15"
     >
-      <h3 className="text-2xl font-bold mt-27 mb-4 ">Reserva #: {id}</h3>
+      <h3 className="text-2xl font-bold mt-30 mb-4">Reserva #: {id}</h3>
       <div className="flex flex-col gap-2 space-y-2 text-base">
         <p>📅 Fecha: {date}</p>
         <p>⏰ Hora: {time}</p>
       </div>
       <div className="pt-7">
-        <CancelButton appointmentId={id} />
+        <CancelButton appointmentId={id} status={status} />
       </div>
       <div className="absolute right-13 top-62 transform -translate-y-1/2">
         <p

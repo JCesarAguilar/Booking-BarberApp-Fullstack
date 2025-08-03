@@ -1,13 +1,16 @@
 import { Formik, Field, Form, ErrorMessage } from "Formik";
-import validateLogin from "../../helpers/validateLogin";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import imageRegister from "../../assets/images/fondo_register.jpg";
 import { useAuth } from "../../context/useAuth";
+import { useAlert } from "../../hooks/useAlert";
+import validateLogin from "../../helpers/validateLogin";
+import imageRegister from "../../assets/images/fondo_register.jpg";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { successLogin, errorLogin } = useAlert();
+
   return (
     <div
       className="min-h-[78vh]
@@ -71,16 +74,15 @@ const Login = () => {
                   const loggedUserData = response.data;
 
                   await login(loggedUserData);
+                  await successLogin();
 
-                  alert(response.data.message || "Inicio de sesión exitoso ✅");
                   navigate("/turnos");
+
                   resetForm();
                 } catch (error) {
-                  const errorMsg =
-                    error.response?.data?.message ||
+                  error.response?.data?.message ||
                     "Usuario y/o Contraseña incorrectos";
-                  alert(errorMsg);
-                  console.error("Error al iniciar sesión:", errorMsg);
+                  await errorLogin();
                 }
               }}
             >

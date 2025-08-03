@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 
 const RedirectIfLoggedIn = ({ children }) => {
-  const { user, loadingAuth, justLoggedIn, setJustLoggedIn } = useAuth();
+  const { user, loadingAuth, justLoggedIn } = useAuth();
   const location = useLocation();
 
   if (loadingAuth) {
@@ -19,10 +19,6 @@ const RedirectIfLoggedIn = ({ children }) => {
     (location.pathname === "/login" || location.pathname === "/register")
   ) {
     return <Navigate to="/" replace />;
-  }
-
-  if (justLoggedIn) {
-    setJustLoggedIn(false);
   }
 
   return children;

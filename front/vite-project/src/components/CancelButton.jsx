@@ -2,9 +2,9 @@ import { useAuth } from "../context/useAuth";
 import axios from "axios";
 import { useAlert } from "../hooks/useAlert";
 
-const CancelButton = ({ appointmentId }) => {
+const CancelButton = ({ appointmentId, status }) => {
   const { updateAppointments } = useAuth();
-  const { confirmCancel, successCancel, errorCancel } = useAlert();
+  const { confirmCancel, successCancel, errorCancelAppointment } = useAlert();
 
   const handleCancelAppointment = async () => {
     const choice = await confirmCancel();
@@ -17,15 +17,18 @@ const CancelButton = ({ appointmentId }) => {
         await successCancel();
       } catch (error) {
         console.error("Error al cancelar la reserva", error);
-        await errorCancel();
+        await errorCancelAppointment();
       }
     }
   };
   return (
     <button
       onClick={handleCancelAppointment}
-      className="bg-red-700 rounded-lg hover:bg-red-600 cursor-pointer
-                 py-1 px-6 w-30"
+      className={`bg-red-700 rounded-lg hover:bg-red-600 cursor-pointer
+                 py-1 px-6 w-30
+                 ${status !== "active" ? "opacity-70 cursor-not-allowed" : ""}
+                 `}
+      disabled={status !== "active"}
     >
       Cancelar
     </button>

@@ -1,10 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from "Formik";
-import axios from "axios";
-import validateApp from "../helpers/validateApp";
 import { useAuth } from "../context/useAuth";
+import { useAlert } from "../hooks/useAlert";
+import validateApp from "../helpers/validateApp";
+import axios from "axios";
 
 const CreateTurno = () => {
   const { user } = useAuth();
+  const { successSchedule, errorSchedule } = useAlert();
+
   return (
     <div
       className="flex flex-col
@@ -33,18 +36,15 @@ const CreateTurno = () => {
                   date: input.date,
                   time: input.time,
                 };
-
-                const response = await axios.post(
+                await axios.post(
                   "http://localhost:3000/appointments/schedule",
                   payload
                 );
                 resetForm();
-                alert(response.data.message || "Turno creado con éxito ✅");
+                await successSchedule();
               } catch (err) {
                 console.error(err);
-                alert(
-                  err.response?.data?.message || "Error al crear el turno ❌"
-                );
+                await errorSchedule();
               }
             }}
           >

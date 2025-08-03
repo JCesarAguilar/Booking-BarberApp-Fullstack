@@ -40,7 +40,7 @@ const NavBar = () => {
             <li>
               <button
                 onClick={handleLogout}
-                className="text-red-400 cursor-pointer"
+                className="text-red-500 cursor-pointer"
               >
                 Cerrar sesión
               </button>

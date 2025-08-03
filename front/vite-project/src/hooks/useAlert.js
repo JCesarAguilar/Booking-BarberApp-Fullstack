@@ -24,7 +24,7 @@ export const useAlert = () => {
       customClass: { popup: "font-redhat" },
     });
 
-  const errorCancel = () =>
+  const errorCancelAppointment = () =>
     Swal.fire({
       icon: "error",
       title: "Error",
@@ -34,15 +34,75 @@ export const useAlert = () => {
       customClass: { popup: "font-redhat" },
     });
 
-  const successSchedule = () =>
+  const successRegister = () =>
     Swal.fire({
       icon: "success",
-      title: "Cancelada",
-      text: "La reserva ha sido agendada correctamente",
+      title: "Listo",
+      text: "Usuario registrado con éxito",
       confirmButtonText: "OK",
       confirmButtonColor: "#28a745",
       customClass: { popup: "font-redhat" },
     });
 
-  return { confirmCancel, successCancel, errorCancel, successSchedule };
+  const errorRegister = (errorMsg) =>
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: errorMsg || "Error al registrar usuario",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#d33",
+      customClass: { popup: "font-redhat" },
+    });
+
+  const successLogin = () =>
+    Swal.fire({
+      icon: "success",
+      title: "Listo",
+      text: "Inicio de sesión exitoso",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#28a745",
+      customClass: { popup: "font-redhat" },
+    });
+
+  const errorLogin = () =>
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Usuario y/o Contraseña incorrectos",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#d33",
+      customClass: { popup: "font-redhat" },
+    });
+
+  const successSchedule = () =>
+    Swal.fire({
+      icon: "success",
+      title: "Listo",
+      text: "La reserva ha sido agendada éxito",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#28a745",
+      customClass: { popup: "font-redhat" },
+    });
+
+  const errorSchedule = () =>
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Error al agendar reserva",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#d33",
+      customClass: { popup: "font-redhat" },
+    });
+
+  return {
+    confirmCancel,
+    successCancel,
+    errorCancelAppointment,
+    successRegister,
+    errorRegister,
+    successLogin,
+    errorLogin,
+    successSchedule,
+    errorSchedule,
+  };
 };

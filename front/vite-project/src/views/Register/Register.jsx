@@ -1,9 +1,14 @@
 import { Formik, Field, Form, ErrorMessage } from "Formik";
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "../../hooks/useAlert";
 import validateRegister from "../../helpers/validateRegister";
-import axios from "axios";
 import imageRegister from "../../assets/images/fondo_register.jpg";
+import axios from "axios";
 
 const Register = () => {
+  const { successRegister, errorRegister } = useAlert();
+  const navigate = useNavigate();
+
   return (
     <div
       className="min-h-[78vh] 
@@ -70,20 +75,17 @@ const Register = () => {
                     ...input,
                     nDni: Number(input.dni),
                   };
-                  const response = await axios.post(
+                  await axios.post(
                     "http://localhost:3000/users/register",
                     payload
                   );
-                  alert(
-                    response.data.message || "Usuario registrado con éxito ✅"
-                  );
+                  await successRegister();
                   resetForm();
+                  navigate("/login");
                 } catch (error) {
-                  const errorMsg =
-                    error.response?.data?.message ||
-                    "Error al registrar usuario ❌";
+                  const errorMsg = error.response?.data?.message;
                   console.error("Error al registrar:", errorMsg);
-                  alert(errorMsg);
+                  await errorRegister(errorMsg);
                 }
               }}
             >

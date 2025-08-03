@@ -16,10 +16,6 @@ export const getUserByIdService = async (id: number): Promise<User> => {
 };
 
 export const registerUserService = async (userData: UserRegisterDTO): Promise<PublicUserResponse> => {
-  const usernameExists = await CredentialRepository.findOneBy({ username: userData.username });
-  if (usernameExists) {
-    throw new Error('El nombre de usuario ya está en uso');
-  }
   const emailExists = await UserRepository.findOneBy({ email: userData.email });
   if (emailExists) {
     throw new Error('El email ya está registrado');
@@ -27,6 +23,10 @@ export const registerUserService = async (userData: UserRegisterDTO): Promise<Pu
   const dniExists = await UserRepository.findOneBy({ nDni: userData.nDni });
   if (dniExists) {
     throw new Error('El DNI ya está registrado');
+  }
+  const usernameExists = await CredentialRepository.findOneBy({ username: userData.username });
+  if (usernameExists) {
+    throw new Error('El nombre de usuario ya está en uso');
   }
   const savedUser = await AppDataSource.transaction(async transactionalEntityManager => {
     const userCredential = await createCredentialService(transactionalEntityManager, userData.username, userData.password);
