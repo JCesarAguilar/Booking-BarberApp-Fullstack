@@ -1,5 +1,5 @@
 import logo from "../assets/images/logo.png";
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 
 const Header = () => {
   return (

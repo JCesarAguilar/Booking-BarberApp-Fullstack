@@ -1,4 +1,4 @@
-import BurgerMenu from "../assets/images/BurgerMenu.png";
+import { BurgerMenu } from "./BurgerMenu";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 
@@ -12,30 +12,41 @@ const NavBar = () => {
   };
 
   return (
-    <>
+    <nav>
+      <BurgerMenu />
       <ul
         className="hidden sm:flex text-[18px] text-gray-50 sm:w-[438px] sm:place-content-around sm:text-[18px] 
-      sm:items-center "
+      sm:items-center"
       >
         <li>
-          <Link to="/">Inicio</Link>
+          <Link to="/" className="cursor-pointer">
+            Inicio
+          </Link>
         </li>
         {!isLoggedIn ? (
           <>
             <li>
-              <Link to="/register">Registrarse</Link>
+              <Link to="/register" className="cursor-pointer">
+                Registrarse
+              </Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" className="cursor-pointer">
+                Login
+              </Link>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link to="/schedule">Agendar</Link>
+              <Link to="/schedule" className="cursor-pointer">
+                Agendar
+              </Link>
             </li>
             <li>
-              <Link to="/turnos">Mis Turnos</Link>
+              <Link to="/turnos" className="cursor-pointer">
+                Mis Turnos
+              </Link>
             </li>
             <li>
               <button
@@ -48,13 +59,7 @@ const NavBar = () => {
           </>
         )}
       </ul>
-
-      <img
-        className="w-10 h-10 cursor-pointer sm:hidden"
-        src={BurgerMenu}
-        alt="Menu Hamburguesa"
-      />
-    </>
+    </nav>
   );
 };
 

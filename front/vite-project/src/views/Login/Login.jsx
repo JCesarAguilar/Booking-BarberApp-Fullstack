@@ -25,7 +25,7 @@ const Login = () => {
       >
         <div
           className="flex flex-col 
-                      w-full h-full 
+                      w-full h-full mx-auto
                       shadow-2xl shadow-black/70
                       md:w-[60%] md:h-100 md:flex-row"
         >

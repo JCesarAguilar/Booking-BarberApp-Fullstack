@@ -11,7 +11,7 @@
   font-family: "Red Hat Display";
   src: url("./assets/fonts/RedHatDisplay-VariableFont_wght.ttf")
     format("truetype");
-  font-weight: 100 900; /* Soporta variable weights */
+  font-weight: 100 900;
   font-style: normal;
 }
 
@@ -38,4 +38,9 @@
 
 .font-redhat {
   font-family: "Red Hat Display";
+}
+
+html,
+body {
+  overflow-x: hidden;
 }

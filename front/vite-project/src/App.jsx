@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import MainArticle from "./components/MainArticle";
 import Footer from "./components/Footer";
 import MisTurnos from "./views/MisTurnos/MisTurnos";
 import Login from "./views/Login/Login";
@@ -10,6 +9,7 @@ import NotFound from "./components/NotFound";
 import Shedule from "./views/Schedule/Schedule";
 import { useLocation } from "react-router-dom";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
+import Home from "./views/Home/Home";
 
 function App() {
   const location = useLocation();
@@ -21,7 +21,7 @@ function App() {
       {!hideLayout && <Header />}
 
       <Routes>
-        <Route path="/" element={<MainArticle />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/register"
           element={

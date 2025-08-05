@@ -78,7 +78,7 @@ export const useAlert = () => {
     Swal.fire({
       icon: "success",
       title: "Listo",
-      text: "La reserva ha sido agendada éxito",
+      text: "La reserva ha sido agendada con éxito",
       confirmButtonText: "OK",
       confirmButtonColor: "#28a745",
       customClass: { popup: "font-redhat" },
