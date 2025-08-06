@@ -37,7 +37,7 @@ export const registerUserController = async (req: Request<unknown, unknown, User
   }
 };
 
-export const loginUserController = async (req: Request<unknown, unknown, UserLoginDTO>, res: Response) => {
+export const loginUserController = async (req: Request<unknown, unknown, UserLoginDTO>, res: Response): Promise<void> => {
   try {
     const user: UserLoginDoneDTO = await loginUserService(req.body);
     res.status(200).json({
@@ -51,21 +51,16 @@ export const loginUserController = async (req: Request<unknown, unknown, UserLog
   }
 };
 
-export const uploadProfilePicController = async (req: Request, res: Response) => {
-  console.log('📥 Entró al controlador de upload');
+export const uploadProfilePicController = async (req: Request, res: Response): Promise<Response | void> => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No se subió ninguna imagen' });
     }
-    console.log('BODY ===>', req.body);
-    console.log('REQ.FILE ===>', req.file);
 
     const userId: number = Number(req.body.userId);
-
     const imageUrl: string = req.file.path;
-
-    const result = await uploadProfilePicService(userId, imageUrl);
-    res.status(200).json(result);
+    const updatedImage = await uploadProfilePicService(userId, imageUrl);
+    res.status(200).json(updatedImage);
   } catch (error) {
     res.status(400).json({
       message: error instanceof Error ? error.message : 'No se pudo cargar la imagen'

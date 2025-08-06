@@ -19,19 +19,22 @@ const NavBar = () => {
       sm:items-center"
       >
         <li>
-          <Link to="/" className="cursor-pointer">
+          <Link to="/" className="cursor-pointer hover:text-red-500">
             Inicio
           </Link>
         </li>
         {!isLoggedIn ? (
           <>
             <li>
-              <Link to="/register" className="cursor-pointer">
+              <Link
+                to="/register"
+                className="cursor-pointer hover:text-red-500"
+              >
                 Registrarse
               </Link>
             </li>
             <li>
-              <Link to="/login" className="cursor-pointer">
+              <Link to="/login" className="cursor-pointer hover:text-red-500">
                 Login
               </Link>
             </li>
@@ -39,19 +42,22 @@ const NavBar = () => {
         ) : (
           <>
             <li>
-              <Link to="/schedule" className="cursor-pointer">
+              <Link
+                to="/schedule"
+                className="cursor-pointer hover:text-red-500"
+              >
                 Agendar
               </Link>
             </li>
             <li>
-              <Link to="/turnos" className="cursor-pointer">
+              <Link to="/turnos" className="cursor-pointer hover:text-red-500">
                 Mis Turnos
               </Link>
             </li>
             <li>
               <button
                 onClick={handleLogout}
-                className="text-red-500 cursor-pointer"
+                className="cursor-pointer hover:text-red-500"
               >
                 Cerrar sesión
               </button>

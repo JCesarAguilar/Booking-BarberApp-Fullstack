@@ -81,6 +81,29 @@ export const AuthProvider = ({ children }) => {
     }
   }, [user, userAppointments]);
 
+  const updateProfileImage = (imageUrl) => {
+    setUser((prevUser) => {
+      const updatedUser = {
+        ...prevUser,
+        profile_image: imageUrl,
+      };
+
+      const stored = localStorage.getItem("user");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...parsed,
+            user: updatedUser,
+          })
+        );
+      }
+
+      return updatedUser;
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -89,6 +112,7 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn,
         loadingAuth,
         justLoggedIn,
+        updateProfileImage,
         setJustLoggedIn,
         login,
         logout,

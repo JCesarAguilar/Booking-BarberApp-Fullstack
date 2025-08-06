@@ -60,18 +60,17 @@ export const loginUserService = async (user: UserLoginDTO): Promise<UserLoginDon
     name: userFounded?.name ?? '',
     email: userFounded?.email ?? '',
     birthdate: userFounded?.birthdate ?? new Date(),
-    nDni: userFounded?.nDni ?? 0
+    nDni: userFounded?.nDni ?? 0,
+    profile_image: userFounded?.profile_image
   };
 };
 
-export const uploadProfilePicService = async (userId: number, imageUrl: string): Promise<string> => {
-  if (!imageUrl) throw new Error('No se subió ninguna imagen');
-
+export const uploadProfilePicService = async (userId: number, imageUrl: string): Promise<{ imageUrl: string }> => {
   const user = await UserRepository.findOne({ where: { id: userId } });
   if (!user) throw new Error('Usuario no encontrado');
 
   user.profile_image = imageUrl;
   await UserRepository.save(user);
 
-  return imageUrl;
+  return { imageUrl };
 };

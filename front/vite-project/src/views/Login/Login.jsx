@@ -34,21 +34,6 @@ const Login = () => {
                       text-gray-50 flex-col items-center justify-center p-10 
                         md:w-1/2"
           >
-            <div className="bg-gray-50 text-black rounded-full p-6 mb-6">
-              <svg
-                className="w-16 h-16"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5.121 17.804A4 4 0 0112 20a4 4 0 016.879-2.196M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </div>
             <h1 className="font-monument text-3xl text-center leading-snug">
               ESTAMOS <br /> PARA <br /> ATENDERTE
             </h1>

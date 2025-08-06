@@ -23,4 +23,5 @@ export interface UserLoginDoneDTO {
   email: string;
   birthdate: Date;
   nDni: number;
+  profile_image?: string;
 }

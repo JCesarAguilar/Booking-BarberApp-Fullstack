@@ -1,14 +1,14 @@
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
-import { v2 as cloudinary } from 'cloudinary';
+import cloudinary from '../config/cloudinary';
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: async (req, file) => {
+  params: async () => {
     return {
-      folder: 'profile_pics',
-      allowed_formats: ['jpg', 'png'],
-      public_id: `${Date.now()}-${file.originalname}`
+      folder: 'uploads',
+      allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+      transformation: [{ width: 500, height: 500, crop: 'limit' }]
     };
   }
 });

@@ -11,3 +11,7 @@ export const DB_NAME: string | undefined = process.env.DB_NAME;
 export const DB_SYNC: boolean = process.env.DB_SYNC ? process.env.DB_SYNC === 'true' : false;
 export const DB_DROP: boolean = process.env.DB_DROP ? process.env.DB_DROP === 'true' : false;
 export const DB_LOG: LoggerOptions = process.env.DB_LOG ? process.env.DB_LOG === 'true' : ['error'];
+
+export const CLOUDINARY_CLOUD_NAME: string | undefined = process.env.CLOUDINARY_CLOUD_NAME;
+export const CLOUDINARY_API_KEY: string | undefined = process.env.CLOUDINARY_API_KEY;
+export const CLOUDINARY_API_SECRET: string | undefined = process.env.CLOUDINARY_API_SECRET;
