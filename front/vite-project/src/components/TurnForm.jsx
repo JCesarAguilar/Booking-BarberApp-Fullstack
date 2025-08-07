@@ -8,6 +8,18 @@ const CreateTurno = () => {
   const { user } = useAuth();
   const { successSchedule, errorSchedule } = useAlert();
 
+  const generateTimeSlots = () => {
+    const slots = [];
+    for (let hour = 8; hour <= 17; hour++) {
+      slots.push(`${String(hour).padStart(2, "0")}:00`);
+      if (hour < 17) slots.push(`${String(hour).padStart(2, "0")}:30`);
+      if (hour === 17) slots.push("17:30"); // ⬅️ agregarlo manualmente
+    }
+    return slots;
+  };
+
+  const timeSlots = generateTimeSlots();
+
   return (
     <div
       className="flex flex-col
@@ -67,10 +79,17 @@ const CreateTurno = () => {
                 <div>
                   <label className="block mb-1">HORA</label>
                   <Field
-                    type="time"
+                    as="select"
                     name="time"
                     className="border px-3 py-2 rounded w-full"
-                  />
+                  >
+                    <option value="">Selecciona un horario</option>
+                    {timeSlots.map((slot) => (
+                      <option key={slot} value={slot}>
+                        {slot}
+                      </option>
+                    ))}
+                  </Field>
                   <ErrorMessage
                     name="time"
                     component="div"
@@ -133,9 +152,43 @@ const CreateTurno = () => {
           </svg>
           No atendemos los fines de semana.
         </p>
-        <h3 className="text-gray-50 text-xl font-monument pt-8 pb-2">
-          Política de cancelación de reservas
+        <h3 className="text-gray-50 text-xl font-monument pt-4 pb-2">
+          Política de reservas
         </h3>
+        <p className="flex items-center gap-2 text-gray-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 12h16m0 0l-6-6m6 6l-6 6"
+            />
+          </svg>
+          Cada reserva dura 30 minutos..
+        </p>
+        <p className="flex items-center gap-2 text-gray-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-4 h-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 12h16m0 0l-6-6m6 6l-6 6"
+            />
+          </svg>
+          Reservas desde 08:00 hasta 17:30.
+        </p>
         <p className="flex items-center gap-2 text-gray-50">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -151,8 +204,8 @@ const CreateTurno = () => {
               d="M4 12h16m0 0l-6-6m6 6l-6 6"
             />
           </svg>
-          Las reservas solo pueden ser canceladas con un mínimo de 24 horas de
-          antelación.
+          Las cancelaciones solo están permitidas con más de 24 horas de
+          anticipación.
         </p>
       </div>
     </div>

@@ -34,13 +34,14 @@ const Login = () => {
                       text-gray-50 flex-col items-center justify-center p-10 
                         md:w-1/2"
           >
-            <h1 className="font-monument text-3xl text-center leading-snug">
-              ESTAMOS <br /> PARA <br /> ATENDERTE
+            <h1 className="flex aspect-square items-center font-monument text-3xl text-center leading-snug">
+              ¡TE ESTABAMOS <br /> ESPERANDO!
             </h1>
           </div>
           <div
             className="bg-gray-50 w-full h-full p-10 
-                        flex flex-col
+                        flex flex-col justify-center
+                        aspect-square
                         md:w-1/2"
           >
             <h2 className="font-monument text-3xl mb-6">INICIAR SESIÓN</h2>

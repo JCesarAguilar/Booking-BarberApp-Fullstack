@@ -2,6 +2,7 @@ import { ScheduleAppDTO, Status } from '../dtos/AppDTO';
 import { getUserByIdService } from './userService';
 import AppointmentRepository from '../repositories/AppointmentRepository';
 import { Appointment } from '../entities/AppointmentEntity';
+import { sendBookingEmail } from '../utils/emailService';
 
 export const getAppService = async (): Promise<Appointment[]> => {
   const appointmentList = await AppointmentRepository.find();
@@ -25,6 +26,13 @@ export const registerAppService = async (appointment: ScheduleAppDTO): Promise<S
     user
   });
   await AppointmentRepository.save(newAppointment);
+
+  try {
+    await sendBookingEmail(user.email, user.name, newAppointment.date, newAppointment.time);
+  } catch (emailError) {
+    console.error('Error al enviar email', emailError);
+  }
+
   return {
     date: newAppointment.date,
     time: newAppointment.time,

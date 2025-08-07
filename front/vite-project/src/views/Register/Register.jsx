@@ -34,13 +34,14 @@ const Register = () => {
                         items-center justify-center  
                         md:w-1/2 md:h-auto"
           >
-            <h1 className="font-monument text-3xl text-center leading-snug">
+            <h1 className="flex items-center aspect-square font-monument text-3xl text-center leading-snug">
               ESTAMOS <br /> PARA <br /> ATENDERTE
             </h1>
           </div>
           <div
             className="bg-gray-50 w-full p-8
                         flex flex-col justify-center
+                        aspect-square 
                         md:w-1/2 md:p-10"
           >
             <h2 className="font-monument text-3xl mb-6">REGÍSTRATE AQUÍ</h2>
