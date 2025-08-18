@@ -70,9 +70,8 @@ Los usuarios pueden registrarse, iniciar sesión, reservar citas, cancelarlas y 
 
 ## ⚙️ Instalación y uso
 
-### 🔁 Clonar el repositorio
-
 ```bash
+### 🔁 Clonar el repositorio
 git clone https://github.com/JCesarAguilar/Gestor-de-Turnos.git
 cd Gestor-de-Turnos
 
@@ -112,18 +111,5 @@ npm install
 
 # Ejecutar la app
 
-npm run dev
-
-
-
-
-
-# Entrar en el directorio
-cd TU-REPO
-
-# Instalar dependencias
-npm install
-
-# Ejecutar en modo desarrollo
 npm run dev
 ```
