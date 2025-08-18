@@ -81,11 +81,21 @@ cd Gestor-de-Turnos
 
 ## 📦 Backend
 
-cd back
-npm install
-cp .env.example .env # Copiar archivo de ejemplo
+# Entrar al directorio del backend
 
-# Editar el archivo .env con tus datos
+cd back
+
+# Instalar dependencias
+
+npm install
+
+# Copiar archivo de entorno
+
+cp .env.example .env
+
+# Editar el archivo .env con tus variables reales
+
+# Ejecutar el servidor
 
 npm run dev
 
@@ -93,6 +103,14 @@ npm run dev
 
 ## 💻 Frontend
 
+# Ir al frontend
+
 cd ../front
+
+# Instalar dependencias
+
 npm install
+
+# Ejecutar la app
+
 npm run dev
