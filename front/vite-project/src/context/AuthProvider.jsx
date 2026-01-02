@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { AuthContext } from "./AuthContext";
-import axios from "axios";
+import { API_URL } from "../config/config";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (loggedUserData) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/users/${loggedUserData.user.id}`
+        `${API_URL}/users/${loggedUserData.user.id}`
       );
       const appointments = response.data.appointments || [];
 
@@ -54,9 +55,7 @@ export const AuthProvider = ({ children }) => {
     try {
       if (!user) return;
 
-      const response = await axios.get(
-        `http://localhost:3000/users/${user.id}`
-      );
+      const response = await axios.get(`${API_URL}/users/${user.id}`);
       const updatedAppointments = response.data.appointments || [];
 
       if (

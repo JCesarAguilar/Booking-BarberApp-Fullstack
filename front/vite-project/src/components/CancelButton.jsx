@@ -1,6 +1,7 @@
-import { useAuth } from "../context/useAuth";
 import axios from "axios";
+import { useAuth } from "../context/useAuth";
 import { useAlert } from "../hooks/useAlert";
+import { API_URL } from "../config";
 
 const CancelButton = ({ appointmentId, status }) => {
   const { updateAppointments } = useAuth();
@@ -10,9 +11,7 @@ const CancelButton = ({ appointmentId, status }) => {
     const choice = await confirmCancel();
     if (choice.isConfirmed) {
       try {
-        await axios.put(
-          `http://localhost:3000/appointments/cancel/${appointmentId}`
-        );
+        await axios.put(`${API_URL}/appointments/cancel/${appointmentId}`);
         updateAppointments();
         await successCancel();
       } catch (error) {

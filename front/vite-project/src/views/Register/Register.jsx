@@ -1,9 +1,10 @@
+import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "Formik";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../hooks/useAlert";
 import validateRegister from "../../helpers/validateRegister";
 import imageRegister from "../../assets/images/fondo_register.jpg";
-import axios from "axios";
+import { API_URL } from "../../config/config";
 
 const Register = () => {
   const { successRegister, errorRegister } = useAlert();
@@ -61,10 +62,7 @@ const Register = () => {
                     ...input,
                     nDni: Number(input.dni),
                   };
-                  await axios.post(
-                    "http://localhost:3000/users/register",
-                    payload
-                  );
+                  await axios.post(`${API_URL}/users/register`, payload);
                   await successRegister();
                   resetForm();
                   navigate("/login");

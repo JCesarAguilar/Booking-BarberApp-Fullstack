@@ -1,10 +1,11 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/useAuth";
 import Turno from "../../components/Turno";
 import ProfileImage from "../../components/ProfileImage.jsx";
-import axios from "axios";
 import imagenTurnos from "../../assets/images/fondo_turnos.jpg";
 import defaultProfile from "../../assets/images/user-profile-icon-free-vector.jpg";
+import { API_URL } from "../../config/config";
 
 const MisTurnos = () => {
   const { user, userAppointments, updateAppointments, updateProfileImage } =
@@ -31,13 +32,9 @@ const MisTurnos = () => {
       formData.append("image", file);
       formData.append("userId", user.id);
 
-      const { data } = await axios.post(
-        "http://localhost:3000/users/upload",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const { data } = await axios.post(`${API_URL}/users/upload`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       setProfileImage(data.imageUrl);
       updateProfileImage(data.imageUrl);

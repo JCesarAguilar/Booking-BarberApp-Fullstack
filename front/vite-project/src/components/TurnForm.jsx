@@ -1,8 +1,9 @@
+import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "Formik";
 import { useAuth } from "../context/useAuth";
 import { useAlert } from "../hooks/useAlert";
 import validateApp from "../helpers/validateApp";
-import axios from "axios";
+import { API_URL } from "../config/config";
 
 const CreateTurno = () => {
   const { user } = useAuth();
@@ -48,10 +49,7 @@ const CreateTurno = () => {
                   date: input.date,
                   time: input.time,
                 };
-                await axios.post(
-                  "http://localhost:3000/appointments/schedule",
-                  payload
-                );
+                await axios.post(`${API_URL}/appointments/schedule`, payload);
                 resetForm();
                 await successSchedule();
               } catch (err) {
