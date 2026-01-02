@@ -4,6 +4,8 @@ import { Appointment } from '../entities/AppointmentEntity';
 import { Credential } from '../entities/CredentialEntity';
 import { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, DB_SYNC, DB_DROP, DB_LOG } from './envs';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const AppDataSource = new DataSource({
   type: 'postgres',
   host: DB_HOST,
@@ -15,10 +17,7 @@ export const AppDataSource = new DataSource({
   dropSchema: DB_DROP,
   logging: DB_LOG,
   entities: [User, Appointment, Credential],
-  // ssl: {
-  //   rejectUnauthorized: false
-  // },
-  ssl: false,
+  ssl: isProduction ? { rejectUnauthorized: false } : false,
   subscribers: [],
   migrations: []
 });
