@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Formik, Form, Field, ErrorMessage } from "Formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useAuth } from "../context/useAuth";
 import { useAlert } from "../hooks/useAlert";
 import validateApp from "../helpers/validateApp";
