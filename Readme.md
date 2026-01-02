@@ -51,13 +51,13 @@ Crear un sistema moderno y fácil de usar para:
 
 ## 🖼️ Capturas del sitio
 
-| Home                     | Registro                         | Login                      |
-| ------------------------ | -------------------------------- | -------------------------- |
-| ![Home](assets/home.png) | ![Registro](assets/registro.png) | ![Login](assets/login.png) |
+| Home                                               | Registro                                                   | Login                                                |
+| -------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------- |
+| ![Home](front/vite-project/public/assets/home.png) | ![Registro](front/vite-project/public/assets/registro.png) | ![Login](front/vite-project/public/assets/login.png) |
 
-| Agendar turno                  | Vista de reservas                         |
-| ------------------------------ | ----------------------------------------- |
-| ![Agendar](assets/agendar.png) | ![Reservas](assets/vista-de-reservas.png) |
+| Agendar turno                                            | Vista de reservas                                                   |
+| -------------------------------------------------------- | ------------------------------------------------------------------- |
+| ![Agendar](front/vite-project/public/assets/agendar.png) | ![Reservas](front/vite-project/public/assets/vista-de-reservas.png) |
 
 ---
 
