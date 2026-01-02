@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "../../hooks/useAlert";
 import validateRegister from "../../helpers/validateRegister";
 import imageRegister from "../../assets/images/fondo_register.jpg";
-import { API_URL } from "../../config/config";
+import { API_URL } from "../../config/api";
 
 const Register = () => {
   const { successRegister, errorRegister } = useAlert();

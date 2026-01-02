@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "../context/useAuth";
 import { useAlert } from "../hooks/useAlert";
-import { API_URL } from "../config";
+import { API_URL } from "../config/api";
 
 const CancelButton = ({ appointmentId, status }) => {
   const { updateAppointments } = useAuth();

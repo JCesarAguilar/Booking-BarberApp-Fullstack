@@ -5,7 +5,7 @@ import Turno from "../../components/Turno";
 import ProfileImage from "../../components/ProfileImage.jsx";
 import imagenTurnos from "../../assets/images/fondo_turnos.jpg";
 import defaultProfile from "../../assets/images/user-profile-icon-free-vector.jpg";
-import { API_URL } from "../../config/config";
+import { API_URL } from "../../config/api.js";
 
 const MisTurnos = () => {
   const { user, userAppointments, updateAppointments, updateProfileImage } =

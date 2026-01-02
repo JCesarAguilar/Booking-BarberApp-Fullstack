@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "Formik";
 import { useAuth } from "../context/useAuth";
 import { useAlert } from "../hooks/useAlert";
 import validateApp from "../helpers/validateApp";
-import { API_URL } from "../config/config";
+import { API_URL } from "../config/api";
 
 const CreateTurno = () => {
   const { user } = useAuth();
