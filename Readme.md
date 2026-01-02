@@ -55,6 +55,14 @@ Crear un sistema moderno y fácil de usar para:
 
 ---
 
+🚀Deploy
+
+Frontend: Deploy en Vercel
+Backend: Deploy en Render
+Base de datos: Neon (PostgreSQL serverless)
+
+---
+
 ## 🖼️ Capturas del sitio
 
 | Home                                               | Registro                                                   | Login                                                |
