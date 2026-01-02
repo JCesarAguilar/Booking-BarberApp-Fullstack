@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Formik, Field, Form, ErrorMessage } from "Formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 import { useAlert } from "../../hooks/useAlert";
