@@ -5,7 +5,7 @@ import { useAuth } from "../../context/useAuth";
 import { useAlert } from "../../hooks/useAlert";
 import validateLogin from "../../helpers/validateLogin";
 import imageRegister from "../../assets/images/fondo_register.jpg";
-import { API_URL } from "../../config/config";
+import { API_URL } from "../../config/api";
 
 const Login = () => {
   const navigate = useNavigate();
