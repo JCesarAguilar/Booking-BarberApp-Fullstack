@@ -7,6 +7,12 @@ Pensado con enfoque **responsive**, buenas prácticas y arquitectura escalable.
 
 ---
 
+## 🚀 Demo en vivo
+
+🔗 [Ver sitio desplegado en Vercel](https://barberapp-fullstack.vercel.app/)
+
+---
+
 ## 🚀 Objetivo del proyecto
 
 Crear un sistema moderno y fácil de usar para:
