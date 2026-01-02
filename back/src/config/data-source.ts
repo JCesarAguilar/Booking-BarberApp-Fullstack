@@ -15,9 +15,10 @@ export const AppDataSource = new DataSource({
   dropSchema: DB_DROP,
   logging: DB_LOG,
   entities: [User, Appointment, Credential],
-  ssl: {
-    rejectUnauthorized: false
-  },
+  // ssl: {
+  //   rejectUnauthorized: false
+  // },
+  ssl: false,
   subscribers: [],
   migrations: []
 });

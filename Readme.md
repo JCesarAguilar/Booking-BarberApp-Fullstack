@@ -1,117 +1,91 @@
-# 💈 Gestor de Turnos – Barbershop
+# 💈 Gestor de Turnos — Barbershop (Fullstack)
 
-Aplicación **fullstack** para la gestión de turnos en una barbería.  
-Los usuarios pueden registrarse, iniciar sesión, reservar citas, cancelarlas y recibir notificaciones por correo electrónico.
+**Gestor de Turnos – Barbershop** es una aplicación full‑stack para la administración de citas en una barbería.  
+Permite a los usuarios registrarse, iniciar sesión, reservar turnos, cancelarlos y recibir notificaciones por email.
+
+Pensado con enfoque **responsive**, buenas prácticas y arquitectura escalable.
+
+---
+
+## 🚀 Objetivo del proyecto
+
+Crear un sistema moderno y fácil de usar para:
+
+- Organizar turnos sin planillas manuales
+- Reducir errores de agenda
+- Mejorar la comunicación con los clientes
+- Centralizar gestión desde un solo panel
+
+---
+
+## 🧠 Funcionalidades principales
+
+- ✅ Página pública con branding de la barbería
+- ✅ Registro y login de usuarios
+- ✅ Sistema de reservas con fecha y hora
+- ✅ Visualización y cancelación de turnos
+- ✅ Envío de email de confirmación
+- ✅ Diseño responsive y UI moderna
+- ✅ Backend con validaciones y buenas prácticas
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-**Frontend**
+### **Frontend**
 
-- React
-- Vite
-- Tailwind CSS
-- React Router
+- ⚛️ React
+- ⚡ Vite
+- 🎨 Tailwind CSS
+- 🔀 React Router
 
-**Backend**
+### **Backend**
 
-- Node.js
-- Express.js
-- PostgreSQL + TypeORM
-- Nodemailer
-- Dotenv
-
----
-
-## 📌 Funcionalidades
-
-- Página pública con branding de la barbería.
-- Registro de usuario (formulario validado).
-- Login seguro.
-- Agendamiento de turnos con selector de fecha y hora.
-- Visualización y cancelación de reservas.
-- Envío de email de confirmación.
-- Diseño responsive y UI moderna.
+- 🟩 Node.js
+- 🚏 Express.js
+- 🐘 PostgreSQL + TypeORM
+- ✉️ Nodemailer
+- 🔐 Dotenv
 
 ---
 
-## 🖼️ Demo visual
+## 🖼️ Capturas del sitio
 
-### 🏠 Home
+| Home                     | Registro                         | Login                      |
+| ------------------------ | -------------------------------- | -------------------------- |
+| ![Home](assets/home.png) | ![Registro](assets/registro.png) | ![Login](assets/login.png) |
 
-![Home](./assets/home.png)
-
-### 📝 Registro
-
-![Registro](./assets/registro.png)
-
-### 🔐 Login de usuario
-
-![Login](./assets/login.png)
-
-### 📅 Agendar un turno
-
-![Agendar](./assets/agendar.png)
-
-### 📋 Vista de reservas
-
-![Reservas](./assets/vista-de-reservas.png)
-
-## 🧪 Buenas prácticas aplicadas
-
-- Tipado y organización de **DTOs/Interfaces** (TypeScript en back).
-- **Ruteo** y **protección de rutas** (React Router).
-- **Manejo de estado** con hooks.
-- **ORM** con TypeORM (entidades, repositorios y relaciones).
-- Buenas prácticas: separación por capas, manejo de errores y variables de entorno.
+| Agendar turno                  | Vista de reservas                         |
+| ------------------------------ | ----------------------------------------- |
+| ![Agendar](assets/agendar.png) | ![Reservas](assets/vista-de-reservas.png) |
 
 ---
 
-## ⚙️ Instalación y uso
+## 📁 Estructura del proyecto
 
 ```bash
+Gestor-de-Turnos/
+├── back/                        # Backend (Node.js + PostgreSQL + TypeORM)
+│   └── src/
+│       ├── config/              # Configuración general (DB, server, etc.)
+│       ├── controllers/         # Lógica de controladores
+│       ├── dtos/                # Objetos de transferencia de datos (TypeScript)
+│       ├── entities/            # Entidades de la base de datos (TypeORM)
+│       ├── interfaces/          # Tipado adicional
+│       ├── middlewares/         # Middlewares (auth, errores, etc.)
+│       ├── repositories/        # Acceso a datos (repos personalizados)
+│       ├── routes/              # Definición de endpoints
+│       ├── services/            # Lógica de negocio
+│       └── utils/               # Funciones utilitarias
+│
+└── front/                       # Frontend (React + Vite)
+    └── src/
+        ├── assets/              # Recursos estáticos (imágenes, íconos, etc.)
+        ├── components/          # Componentes reutilizables
+        ├── context/             # Context API para estado global
+        ├── helpers/             # Funciones utilitarias
+        ├── hooks/               # Custom hooks (manejo de lógica)
+        ├── App.jsx              # Enrutamiento principal
+        └── main.jsx             # Punto de entrada
 
-### 🔁 Clonar el repositorio
-
-git clone https://github.com/JCesarAguilar/Gestor-de-Turnos.git
-cd Gestor-de-Turnos
-
----
-
-## 📦 Backend
-
-# Entrar al directorio del backend
-
-cd back
-
-# Instalar dependencias
-
-npm install
-
-# Copiar archivo de entorno
-
-cp .env.example .env
-
-# Editar el archivo .env con tus variables reales
-
-# Ejecutar el servidor
-
-npm run dev
-
----
-
-## 💻 Frontend
-
-# Ir al frontend
-
-cd ../front
-
-# Instalar dependencias
-
-npm install
-
-# Ejecutar la app
-
-npm run dev
 ```
